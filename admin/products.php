@@ -28,6 +28,8 @@ require __DIR__ . '/../includes/header.php';
 <p class="cart-actions">
     <a href="<?= url('admin/product-form.php') ?>" class="btn btn-accent">Thêm sản phẩm</a>
     <a href="<?= url('admin/orders.php') ?>" class="btn">Quản lý đơn hàng</a>
+    <!-- Thêm nút cho trang thống kê mục 4 -->
+    <a href="<?= url('admin/dashboard.php') ?>" class="btn">Xem thống kê</a> 
 </p>
 
 <table>
