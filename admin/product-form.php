@@ -49,11 +49,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ảnh: chỉ xử lý khi người dùng có chọn tệp; không chọn thì giữ ảnh cũ
     if (!$errors && isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
         try {
+            // Làm tính năng 2 xóa ảnh cũ bằng unlink()
+            // 1. Lưu  đường dẫn ảnh cũ trước khi ghi đè
+            $old_image = $product['image'];
+
+            // 2. Đẩy ảnh mới và gán vào mảng
             $product['image'] = upload_image($_FILES['image']);
+
+            // 3. Kiểm tra ảnh cũ có bắt đầu = "uploads/" không
+            if (strpos($old_image, "uploads/") === 0) {
+                // ../ để lùi ra 1 cấp thư mục và thực hiện unlink()
+                unlink('../' . $old_image);
+            }
         } catch (RuntimeException $e) {
             $errors['image'] = $e->getMessage();
         }
     }
+
+    // // Ảnh: chỉ xử lý khi người dùng có chọn tệp; không chọn thì giữ ảnh cũ
+    // if (!$errors && isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+    //     try {
+    //         $product['image'] = upload_image($_FILES['image']);
+    //     } catch (RuntimeException $e) {
+    //         $errors['image'] = $e->getMessage();
+    //     }
+    // }
 
     if (!$errors) {
         $values = [
@@ -134,3 +154,5 @@ require __DIR__ . '/../includes/header.php';
     </p>
 </form>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
+
+
