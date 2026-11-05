@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // 3. Kiểm tra ảnh cũ có bắt đầu = "uploads/" không
             if (strpos($old_image, "uploads/") === 0) {
                 // ../ để lùi ra 1 cấp thư mục và thực hiện unlink()
-                unlink('../' . $old_image);
+                unlink('../'.$old_image);
             }
         } catch (RuntimeException $e) {
             $errors['image'] = $e->getMessage();
@@ -77,8 +77,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$errors) {
         $values = [
-            $product['category_id'], $product['name'], $product['price'],
-            $product['stock'], $product['description'], $product['image'],
+            $product['category_id'],
+            $product['name'],
+            $product['price'],
+            $product['stock'],
+            $product['description'],
+            $product['image'],
         ];
         if ($id > 0) {
             $stmt = $pdo->prepare(
@@ -130,7 +134,7 @@ require __DIR__ . '/../includes/header.php';
     <p>
         <label for="price">Giá (đ)</label><br>
         <input type="number" id="price" name="price" value="<?= e($product['price']) ?>"
-               min="1000" step="1000" required>
+            min="1000" step="1000" required>
         <span class="error"><?= e($errors['price'] ?? '') ?></span>
     </p>
     <p>
@@ -154,5 +158,3 @@ require __DIR__ . '/../includes/header.php';
     </p>
 </form>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
-
-
