@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="site-header">
-        <h1><?= APP_NAME ?></h1>
+        <h1><?= APP_NAME ?><img src="<?= url('images/HuynhCongDanh-N25DTCN008.JPG') ?>" alt="Hình ảnh của sinh viên Huỳnh Công Danh - N25DTCN008" style="width: 20px; height: auto; margin-left: 10px;"></h1>
         <nav class="main-nav">
             <a href="<?= url('index.php') ?>">Trang chủ</a>
             <a href="<?= url('about.php') ?>">Giới thiệu</a>
@@ -26,6 +26,7 @@
                 <a href="<?= url('login.php') ?>">Đăng nhập</a>
                 <a href="<?= url('register.php') ?>">Đăng ký</a>
             <?php endif; ?>
+            
         </nav>
     </header>
 
