@@ -20,6 +20,7 @@
                     <a href="<?= url('admin/products.php') ?>">Quản trị</a>
                 <?php endif; ?>
                 <a href="<?= url('orders.php') ?>">Đơn hàng</a>
+                <a href="<?= url('change-password.php') ?>">Đổi mật khẩu</a>
                 <a href="<?= url('logout.php') ?>">Đăng xuất (<?= e(current_user()['fullname']) ?>)</a>
             <?php else: ?>
                 <a href="<?= url('login.php') ?>">Đăng nhập</a>
