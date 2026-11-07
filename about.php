@@ -9,7 +9,7 @@ require __DIR__ . '/includes/header.php';
 
 <h3>Chúng tôi là ai</h3>
 <p>
-    BooksStory là 1 cửa hàng buôn bán những cuốn sách tâm đắc mà chủ tiệm từng đọc qua
+    BooksStory(Huỳnh Công Danh) là 1 cửa hàng buôn bán những cuốn sách tâm đắc mà chủ tiệm từng đọc qua
     dành cho mọi người. Mọi người có thể đọc đánh giá của cuốn sách của chủ tiệm để quyết định.
 </p>
 <p>
