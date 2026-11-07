@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fullname' => $user['fullname'],
             'role'     => $user['role'],
         ];
+        // Làm trống giỏ hàng khi đăng nhập để tránh dính giỏ hàng cũ
+        unset($_SESSION['cart']);
+        $_SESSION['cart'] = [];
         set_flash('success', 'Xin chào ' . $user['fullname'] . '!');
         redirect('index.php');
     }

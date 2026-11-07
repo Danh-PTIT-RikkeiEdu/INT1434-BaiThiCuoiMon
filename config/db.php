@@ -8,7 +8,7 @@ define('DB_PASS', '');
 // Hỗ trợ tự động nhận diện cơ sở dữ liệu booksStory hoặc minishop
 $pdo = null;
 $connectedDb = null;
-$possibleDatabases = ['booksStory', 'booksstory', 'minishop'];
+$possibleDatabases = ['books_story'];
 
 foreach ($possibleDatabases as $dbName) {
     try {

@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo->commit();
 
             unset($_SESSION['cart']);
+            $_SESSION['cart'] = [];
             set_flash('success', 'Đặt hàng thành công. Mã đơn hàng của bạn là #' . $orderId . '.');
             redirect('order-detail.php?id=' . $orderId);
         } catch (RuntimeException $e) {
