@@ -38,7 +38,12 @@ require __DIR__ . '/includes/header.php';
         </tr>
         <tr>
             <th>Trạng thái</th>
-            <td><?= e(order_status_label($order['status'])) ?></td>
+            <td>
+                <strong><?= e(order_status_label($order['status'])) ?></strong>
+                <?php if ($order['status'] === 'pending'): ?>
+                    <span style="color: #666; font-size: 0.9rem; margin-left: 8px;">(Đang chờ xử lý - Bạn có thể hủy đơn nếu muốn)</span>
+                <?php endif; ?>
+            </td>
         </tr>
         <tr>
             <th>Người nhận</th>
@@ -83,5 +88,16 @@ require __DIR__ . '/includes/header.php';
     </tfoot>
 </table>
 
-<p><a href="<?= url(is_admin() ? 'admin/orders.php' : 'orders.php') ?>">&laquo; Danh sách đơn hàng</a></p>
+<p class="cart-actions">
+    <a href="<?= url(is_admin() ? 'admin/orders.php' : 'orders.php') ?>" class="btn">&laquo; Danh sách đơn hàng</a>
+    <?php if ($order['status'] === 'pending'): ?>
+        <form action="<?= url('order-cancel.php') ?>" method="post" class="inline-form"
+              onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng #<?= $order['id'] ?> không?');">
+            <?= csrf_field() ?>
+            <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
+            <input type="hidden" name="redirect" value="order-detail.php?id=<?= $order['id'] ?>">
+            <button type="submit" class="btn btn-danger">Hủy đơn hàng</button>
+        </form>
+    <?php endif; ?>
+</p>
 <?php require __DIR__ . '/includes/footer.php'; ?>

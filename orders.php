@@ -34,7 +34,18 @@ require __DIR__ . '/includes/header.php';
                     <td><?= date('d/m/Y H:i', strtotime($order['created_at'])) ?></td>
                     <td><?= format_price($order['total']) ?></td>
                     <td><?= e(order_status_label($order['status'])) ?></td>
-                    <td><a href="<?= url('order-detail.php?id=' . $order['id']) ?>">Xem</a></td>
+                    <td>
+                        <a href="<?= url('order-detail.php?id=' . $order['id']) ?>" class="btn" style="padding: 4px 10px; font-size: 0.9rem;">Xem</a>
+                        <?php if ($order['status'] === 'pending'): ?>
+                            <form action="<?= url('order-cancel.php') ?>" method="post" class="inline-form"
+                                  onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng #<?= $order['id'] ?> không?');">
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
+                                <input type="hidden" name="redirect" value="orders.php">
+                                <button type="submit" class="btn btn-danger" style="padding: 4px 10px; font-size: 0.9rem; margin-left: 4px;">Hủy đơn</button>
+                            </form>
+                        <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
