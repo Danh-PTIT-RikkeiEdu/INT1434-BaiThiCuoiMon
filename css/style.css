@@ -6,8 +6,8 @@
     --accent-dark: #cf6d17;
     --text: #222222;
     --muted: #666666;
-    --border: #e2dfea;
-    --bg: #f8f7fb;
+    --border: #ebe6dd;
+    --bg: #faf6f0;
     --white: #ffffff;
     --danger: #c0392b;
 }
@@ -276,7 +276,7 @@ th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f6f4fa;
+    background-color: #f5f1e8;
 }
 
 .cart-table input[type="number"] {

@@ -10,7 +10,7 @@ $product = [
     'price'       => '',
     'stock'       => '',
     'description' => '',
-    'image'       => 'images/sp01.jpg',
+    'image'       => 'images/DacNhanTam.jpg',
 ];
 
 if ($id > 0) {
@@ -148,7 +148,9 @@ require __DIR__ . '/../includes/header.php';
     </p>
     <p>
         <label for="image">Ảnh sản phẩm (JPG, PNG, WebP; tối đa 2 MB)</label><br>
-        <img src="<?= url($product['image']) ?>" alt="" class="thumb">
+        <?php if (!empty($product['image']) && file_exists(__DIR__ . '/../' . $product['image'])): ?>
+            <img src="<?= url($product['image']) ?>" alt="" class="thumb">
+        <?php endif; ?>
         <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp">
         <span class="error"><?= e($errors['image'] ?? '') ?></span>
     </p>
