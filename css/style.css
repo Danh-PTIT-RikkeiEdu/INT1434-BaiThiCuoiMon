@@ -1,13 +1,13 @@
 /* ===== 1. Biến màu và thiết lập chung ===== */
 :root {
-    --primary: #1f4e79;
-    --primary-dark: #163a5a;
+    --primary: #5c35a6;
+    --primary-dark: #482686;
     --accent: #e67e22;
     --accent-dark: #cf6d17;
     --text: #222222;
     --muted: #666666;
-    --border: #dddddd;
-    --bg: #f5f6f8;
+    --border: #e2dfea;
+    --bg: #f8f7fb;
     --white: #ffffff;
     --danger: #c0392b;
 }
@@ -247,7 +247,7 @@ main {
 .form textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(31, 78, 121, 0.2);
+    box-shadow: 0 0 0 3px rgba(92, 53, 166, 0.2);
 }
 
 .error {
@@ -276,7 +276,7 @@ th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f0f4f8;
+    background-color: #f6f4fa;
 }
 
 .cart-table input[type="number"] {
